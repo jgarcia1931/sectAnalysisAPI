@@ -9,6 +9,7 @@ const UserSchema = new mongoose.Schema({
         type: String,
         required: [true, 'Please add a name'],
     },
+    googleId: String,
     email: {
         type: String,
         required: [true, 'Please add an email'],
@@ -25,7 +26,7 @@ const UserSchema = new mongoose.Schema({
     },
     password: {
         type: String,
-        required: [true, 'Please add a password'],
+        // required: [true, 'Please add a password'],
         minlength: 6,
         select: false,
     },

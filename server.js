@@ -7,6 +7,7 @@ const connectDB = require('./config/db');
 const colors = require('colors');
 const errorHandler = require('./middleware/error');
 const fileupload = require('express-fileupload');
+const cookieSession = require("cookie-session");
 const cookieParser = require('cookie-parser');
 const mongoSanitize = require('express-mongo-sanitize');
 const helmet = require('helmet');
@@ -14,6 +15,8 @@ const xss = require('xss-clean');
 const rateLimit = require('express-rate-limit');
 const hpp = require('hpp');
 const cors = require('cors');
+const passportSetup = require('./config/passport-setup');
+const passport = require('passport');
 // const logger = require('./middleware/logger')
 
 // load env vars
@@ -38,7 +41,18 @@ const app = express();
 app.use(express.json());
 
 // Cookie Parser
+app.use(
+    cookieSession({
+        name: "session",
+        keys: ["asdfkhjwlaer"],
+        maxAge: 24 * 60 * 60 * 100
+    })
+);
 app.use(cookieParser())
+
+// Initialize passport
+app.use(passport.initialize());
+app.use(passport.session());
 
 // Dev Logging Middleware
 if (process.env.NODE_ENV === 'development') {

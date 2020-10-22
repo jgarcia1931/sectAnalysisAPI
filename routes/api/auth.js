@@ -1,4 +1,5 @@
 const express = require('express');
+const passport = require('passport');
 const {
     register,
     login,
@@ -17,6 +18,12 @@ const { protect } = require('../../middleware/auth');
 
 router.post('/register', register);
 router.post('/login', login);
+router.get('/google', passport.authenticate('google', {
+    scope: ['profile','email']
+}));
+router.get('/google/callback', passport.authenticate('google'), (req, res) => {
+    res.send('you reached the callback URI');
+});
 router.get('/logout', logout);
 router.get('/me', protect, getMe);
 router.get('/confirmemail', confirmEmail);
