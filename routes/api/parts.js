@@ -26,7 +26,87 @@ router.use('/:partId/sectionProps', sectionPropRouter);
 
 
 
-
+/**
+ * @swagger
+ *   paths:
+ *     /api/v1/parts:
+ *       get:
+ *         tags:
+ *           - "Parts"
+ *         summary: Get All Parts
+ *         responses:
+ *           200:
+ *             description: test
+ *       post:
+ *         tags:
+ *           - "Parts"
+ *         summary: Create Part
+ *         consumes:
+ *           - application/json
+ *         parameters:
+ *           - in: body
+ *             name: user
+ *             description: Create New Part
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 name:
+ *                   type: string
+ *                 description:
+ *                   type: string
+ *                 phone:
+ *                   type: string
+ *                 email:
+ *                   type: string
+ *         responses:
+ *           200:
+ *             description: Created
+ *     /api/v1/parts/{id}:
+ *       get:
+ *         tags:
+ *           - "Parts"
+ *         summary: Get Part
+ *         parameters:
+ *           - in: path
+ *             name: id
+ *             description: Get parts by ID
+ *             required: true
+ *             type: string
+ *         responses:
+ *           200:
+ *             description: Created
+ *       put:
+ *         tags:
+ *           - "Parts"
+ *         summary: Update Part
+ *         consumes:
+ *           - application/json
+ *         parameters:
+ *           - in: body
+ *             name: user
+ *             description: Update Part
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 name:
+ *                   type: string
+ *                 description:
+ *                   type: string
+ *                 phone:
+ *                   type: string
+ *                 email:
+ *                   type: string
+ *         responses:
+ *           200:
+ *             description: Created
+ *       delete:
+ *         tags:
+ *           - "Parts"
+ *         summary: Delete Part
+ *         responses:
+ *           200:
+ *             description: Created
+ */
 
 
 router

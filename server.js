@@ -17,11 +17,12 @@ const hpp = require('hpp');
 const cors = require('cors');
 const passportSetup = require('./config/passport-setup');
 const passport = require('passport');
+const swaggerJsDoc = require('swagger-jsdoc');
+const swaggerUi = require('swagger-ui-express');
 // const logger = require('./middleware/logger')
 
 // load env vars
 dotenv.config({path: './config/config.env'});
-
 
 // Connect to database
 connectDB();
@@ -35,6 +36,24 @@ const sectionProps = require('./routes/api/sectionProps');
 const auth = require('./routes/api/auth');
 
 const app = express();
+
+// Extended: https://swagger.io/specification/#infoObject
+const swaggerOptions = {
+    swaggerDefinition: {
+        info: {
+            title: 'Section Analysis API',
+            version: '1.0.0',
+            description: 'Simple section analysis calculation',
+            contact: {
+                name: 'Jose Garcia'
+            },
+            servers: ["https://developer.somelitecoding.com"]
+        }
+    },
+    apis: ["./routes/api/auth.js", "./routes/api/parts.js", "./routes/api/sectionProps.js"]
+};
+const swaggerDocs = swaggerJsDoc(swaggerOptions);
+app.use('/api/v1/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocs));
 
 // Bodyparser Middleware
 // app.use(bodyParser.json());

@@ -32,6 +32,8 @@
     "passport": "^0.4.1",
     "passport-google-oauth20": "^2.0.0",
     "slugify": "^1.4.5",
+    "swagger-jsdoc": "^4.3.1",
+    "swagger-ui-express": "^4.1.4",
     "xss-clean": "^0.1.1"
   },
   "devDependencies": {
