@@ -47,7 +47,7 @@ const swaggerOptions = {
             contact: {
                 name: 'Jose Garcia'
             },
-            servers: ["https://developer.somelitecoding.com"]
+            servers: ["https://dev.somelitecoding.com"]
         }
     },
     apis: ["./routes/api/auth.js", "./routes/api/parts.js", "./routes/api/sectionProps.js"]
