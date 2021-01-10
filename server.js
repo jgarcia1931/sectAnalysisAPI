@@ -34,6 +34,7 @@ const courses = require('./routes/api/courses');
 const parts = require('./routes/api/parts');
 const sectionProps = require('./routes/api/sectionProps');
 const auth = require('./routes/api/auth');
+const imm = require('./routes/api/immigration');
 
 const app = express();
 
@@ -113,6 +114,8 @@ app.use('/api/v1/parts', parts);
 app.use('/api/v1/sectionProps', sectionProps);
 app.use('/api/v1/items', items);
 app.use('/api/v1/auth', auth);
+
+app.use('/api/v1/immigration', imm);
 
 app.use(errorHandler);
 
